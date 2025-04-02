@@ -19,21 +19,21 @@
           </li>
         </ol>
       </aside>
-      <main>main content</main>
+      <main><router-view /></main>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { inject, Ref } from 'vue';
+import { defineComponent, inject, Ref } from 'vue';
 import TopNav from '../components/TopNav.vue';
-export default {
+export default defineComponent({
   components: { TopNav },
   setup() {
     const asideVisible = inject<Ref<boolean>>('asideVisible');
     return { asideVisible };
   },
-};
+});
 </script>
 
 <style scoped>

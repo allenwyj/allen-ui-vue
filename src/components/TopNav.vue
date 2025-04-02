@@ -13,16 +13,16 @@
 </template>
 
 <script lang="ts">
-import { inject, Ref } from 'vue';
+import { defineComponent, inject, Ref } from 'vue';
 
-export default {
+export default defineComponent({
   setup() {
     const asideVisible = inject<Ref<boolean>>('asideVisible');
     const toggleAside = inject<(e: Event) => void>('toggleAside');
 
     return { asideVisible, toggleAside };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

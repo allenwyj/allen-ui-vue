@@ -3,9 +3,10 @@
 </template>
 
 <script lang="ts">
-import { provide, ref } from 'vue';
+import { defineComponent, provide, ref } from 'vue';
+import { router } from './router';
 
-export default {
+export default defineComponent({
   name: 'App',
   setup() {
     const screenWidth = document.documentElement.clientWidth;
@@ -16,6 +17,12 @@ export default {
       asideVisible.value = !asideVisible.value;
     };
     provide('toggleAside', toggleAside);
+
+    router.afterEach(() => {
+      if (screenWidth <= 500) {
+        asideVisible.value = false;
+      }
+    });
   },
-};
+});
 </script>

@@ -13,11 +13,12 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import TopNav from '../components/TopNav.vue';
 
-export default {
+export default defineComponent({
   components: { TopNav },
-};
+});
 </script>
 
 <style lang="scss" scoped>
