@@ -4,7 +4,12 @@
 </script>
 
 <template>
-  <div>hi</div>
+  <div>
+    Nav | <router-link to="/xxx">xxx</router-link> |
+    <router-link to="/">home</router-link>
+  </div>
+  <hr />
+  <router-view />
 </template>
 
 <style>
