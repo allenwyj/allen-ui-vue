@@ -3,6 +3,7 @@
     v-bind="$attrs"
     class="aui-button"
     :class="classes"
+    :disabled="disabled"
   >
     <slot>Default</slot>
   </button>
@@ -24,6 +25,10 @@ export default defineComponent({
     level: {
       type: String,
       default: 'normal',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
@@ -48,6 +53,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
+$grey: grey;
 
 .aui-button {
   box-sizing: border-box;
@@ -155,6 +161,22 @@ $red: red;
       &:focus {
         color: darken($red, 10%);
       }
+    }
+  }
+  &.aui-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+  &.aui-theme-link,
+  &.aui-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
     }
   }
 }
