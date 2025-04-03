@@ -2,14 +2,14 @@
   <button
     v-bind="$attrs"
     class="aui-button"
-    :class="{ [`aui-button-${theme}`]: theme }"
+    :class="classes"
   >
     <slot>Default</slot>
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
@@ -17,9 +17,26 @@ export default defineComponent({
       type: String,
       default: 'button',
     },
+    size: {
+      type: String,
+      default: 'normal',
+    },
+    level: {
+      type: String,
+      default: 'normal',
+    },
   },
-  setup() {
-    return {};
+  setup(props) {
+    const classes = computed(() => {
+      const { theme, size, level } = props;
+
+      return {
+        [`aui-theme-${theme}`]: theme,
+        [`aui-size-${size}`]: size,
+        [`aui-level-${level}`]: level,
+      };
+    });
+    return { classes };
   },
 });
 </script>
@@ -30,6 +47,8 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
+$red: red;
+
 .aui-button {
   box-sizing: border-box;
   height: $h;
@@ -44,6 +63,7 @@ $radius: 4px;
   border: 1px solid $border-color;
   border-radius: $radius;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
+  transition: background 250ms;
   & + & {
     margin-left: 8px;
   }
@@ -59,7 +79,7 @@ $radius: 4px;
     border: 0;
   }
 
-  &.aui-button-link {
+  &.aui-theme-link {
     border-color: transparent;
     box-shadow: none;
     color: $blue;
@@ -70,7 +90,7 @@ $radius: 4px;
       color: lighten($blue, 10%);
     }
   }
-  &.aui-button-text {
+  &.aui-theme-text {
     border-color: transparent;
     box-shadow: none;
     color: inherit;
@@ -78,6 +98,63 @@ $radius: 4px;
     &:hover,
     &:focus {
       background: darken(white, 5%);
+    }
+  }
+  &.aui-size-large {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+  &.aui-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
+  }
+  &.aui-theme-button {
+    &.aui-level-main {
+      background: $blue;
+      color: white;
+      border-color: $blue;
+      &:hover,
+      &:focus {
+        background: darken($blue, 10%);
+        border-color: darken($blue, 10%);
+      }
+    }
+    &.aui-level-danger {
+      background: $red;
+      border-color: $red;
+      color: white;
+      &:hover,
+      &:focus {
+        background: darken($red, 10%);
+        border-color: darken($red, 10%);
+      }
+    }
+  }
+  &.aui-theme-link {
+    &.aui-level-danger {
+      color: $red;
+      &:hover,
+      &:focus {
+        color: darken($red, 10%);
+      }
+    }
+  }
+  &.aui-theme-text {
+    &.aui-level-main {
+      color: $blue;
+      &:hover,
+      &:focus {
+        color: darken($blue, 10%);
+      }
+    }
+    &.aui-level-danger {
+      color: $red;
+      &:hover,
+      &:focus {
+        color: darken($red, 10%);
+      }
     }
   }
 }
