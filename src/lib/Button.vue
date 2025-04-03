@@ -4,7 +4,7 @@
     class="aui-button"
     :class="{ [`aui-button-${theme}`]: theme }"
   >
-    <slot>Button</slot>
+    <slot>Default</slot>
   </button>
 </template>
 
@@ -57,6 +57,28 @@ $radius: 4px;
   }
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &.aui-button-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    background: none;
+    text-decoration: underline;
+    &:hover,
+    &:focus {
+      color: lighten($blue, 10%);
+    }
+  }
+  &.aui-button-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    background: none;
+    &:hover,
+    &:focus {
+      background: darken(white, 5%);
+    }
   }
 }
 </style>
