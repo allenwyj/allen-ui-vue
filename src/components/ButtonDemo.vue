@@ -9,86 +9,86 @@
   </div>
   <h2>Example 2</h2>
   <div>
-    <Button size="large">大大大</Button>
-    <Button>普普通</Button>
-    <Button size="small">小小小</Button>
+    <Button size="large">Large</Button>
+    <Button>Normal</Button>
+    <Button size="small">Small</Button>
   </div>
   <div>
     <Button
       theme="link"
       size="large"
-      >大大大</Button
+      >Large</Button
     >
-    <Button theme="link">普普通</Button>
+    <Button theme="link">Normal</Button>
     <Button
       size="small"
       theme="link"
-      >小小小</Button
+      >Small</Button
     >
   </div>
   <div>
     <Button
       size="large"
       theme="text"
-      >大大大</Button
+      >Large</Button
     >
-    <Button theme="text">普普通</Button>
+    <Button theme="text">Normal</Button>
     <Button
       size="small"
       theme="text"
-      >小小小</Button
+      >Small</Button
     >
   </div>
   <h2>Example 3</h2>
   <div>
     <div>
-      <Button level="main">主要按钮</Button>
-      <Button>普通按钮</Button>
-      <Button level="danger">危险按钮</Button>
+      <Button level="main">Main</Button>
+      <Button>Normal</Button>
+      <Button level="danger">Danger</Button>
     </div>
     <div>
       <Button
         theme="link"
         level="main"
-        >主要链接按钮</Button
+        >Main Link</Button
       >
-      <Button theme="link">普通链接按钮</Button>
+      <Button theme="link">Normal Link</Button>
       <Button
         theme="link"
         level="danger"
-        >危险链接按钮</Button
+        >Danger Link</Button
       >
     </div>
     <div>
       <Button
         theme="text"
         level="main"
-        >主要文字按钮</Button
+        >Main Text</Button
       >
-      <Button theme="text">普通文字按钮</Button>
+      <Button theme="text">Normal Text</Button>
       <Button
         theme="text"
         level="danger"
-        >危险文字按钮</Button
+        >Danger Text</Button
       >
     </div>
     <h2>Example 4</h2>
     <div>
-      <Button disabled>禁用按钮</Button>
+      <Button disabled>Disabled</Button>
       <Button
         theme="link"
         disabled
-        >禁用链接按钮</Button
+        >Disabled Link</Button
       >
       <Button
         theme="text"
         disabled
-        >禁用按钮</Button
+        >Disabled Text</Button
       >
     </div>
     <h2>Example 5</h2>
     <div>
-      <Button loading>加载中</Button>
+      <Button loading>Loading</Button>
     </div>
   </div>
 </template>
@@ -107,4 +107,11 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+h2 {
+  margin: 20px 0 20px;
+}
+div {
+  margin-bottom: 20px;
+}
+</style>

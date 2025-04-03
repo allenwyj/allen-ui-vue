@@ -9,7 +9,7 @@
       v-if="loading"
       class="aui-loadingIndicator"
     ></span>
-    <slot />
+    <slot>Click</slot>
   </button>
 </template>
 
