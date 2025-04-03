@@ -1,7 +1,8 @@
 <template>
   <button
     @click="toggle"
-    :class="{ on: value }"
+    class="aui-switch"
+    :class="{ 'aui-switch-on': value }"
   >
     <span></span>
   </button>
@@ -25,10 +26,10 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 22px;
 $h2: $h - 4px;
-button {
+.aui-switch {
   height: $h;
   width: $h * 2;
   border: none;
@@ -47,7 +48,7 @@ button {
     transition: all 250ms;
   }
 
-  &.on {
+  &.aui-switch-on {
     background: #1890ff;
     > span {
       left: calc(100% - #{$h2} - 2px);
@@ -63,7 +64,7 @@ button {
     }
   }
 
-  &.on:active {
+  &.aui-switch-on:active {
     > span {
       width: $h2 + 4px;
       margin-left: -4px;
