@@ -86,6 +86,10 @@
         >禁用按钮</Button
       >
     </div>
+    <h2>Example 5</h2>
+    <div>
+      <Button loading>加载中</Button>
+    </div>
   </div>
 </template>
 
