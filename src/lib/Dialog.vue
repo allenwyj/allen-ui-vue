@@ -63,6 +63,7 @@ export default defineComponent({
   components: {
     Button,
   },
+  emits: ['update:visible'],
   setup(props, context) {
     const { emit } = context;
 
@@ -81,6 +82,7 @@ export default defineComponent({
       close();
     };
 
+    // if ok returns false, the dialog will not close
     const ok = () => {
       if (props.ok?.() !== false) {
         close();

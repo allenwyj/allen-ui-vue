@@ -16,6 +16,9 @@
         <div>Content 2</div>
       </template>
     </Dialog>
+
+    <h2>Use openDialog to show dialog</h2>
+    <Button @click="showDialog">toggle</Button>
   </div>
 </template>
 
@@ -23,6 +26,7 @@
 import { defineComponent, ref } from 'vue';
 import Dialog from '../lib/Dialog.vue';
 import Button from '../lib/Button.vue';
+import { openDialog } from '../lib/openDialog';
 
 export default defineComponent({
   components: {
@@ -41,7 +45,22 @@ export default defineComponent({
     };
 
     const cancel = () => {};
-    return { x, toggle, ok, cancel };
+
+    // use openDialog to show dialog
+    const showDialog = () => {
+      openDialog({
+        title: 'Title',
+        content: 'This is a dialog',
+        ok() {
+          console.log('ok');
+        },
+        cancel() {
+          console.log('cancel');
+        },
+      });
+    };
+
+    return { x, toggle, ok, cancel, showDialog };
   },
 });
 </script>
