@@ -1,31 +1,33 @@
 <template>
   <template v-if="visible">
-    <div
-      class="aui-dialog-overlay"
-      @click="overlayClick"
-    ></div>
-    <div class="aui-dialog-wrapper">
-      <div class="aui-dialog">
-        <header>
-          <slot name="title" />
-          <span
-            @click="close"
-            class="aui-dialog-close"
-          ></span>
-        </header>
-        <main>
-          <slot name="content" />
-        </main>
-        <footer>
-          <Button @click="cancel">{{ cancelText }}</Button>
-          <Button
-            @click="ok"
-            level="main"
-            >{{ okText }}</Button
-          >
-        </footer>
+    <Teleport to="body">
+      <div
+        class="aui-dialog-overlay"
+        @click="overlayClick"
+      ></div>
+      <div class="aui-dialog-wrapper">
+        <div class="aui-dialog">
+          <header>
+            <slot name="title" />
+            <span
+              @click="close"
+              class="aui-dialog-close"
+            ></span>
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button @click="cancel">{{ cancelText }}</Button>
+            <Button
+              @click="ok"
+              level="main"
+              >{{ okText }}</Button
+            >
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </template>
 </template>
 
