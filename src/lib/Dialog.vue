@@ -17,11 +17,11 @@
           <slot name="content" />
         </main>
         <footer>
-          <Button @click="cancel">Cancel</Button>
+          <Button @click="cancel">{{ cancelText }}</Button>
           <Button
             @click="ok"
             level="main"
-            >OK</Button
+            >{{ okText }}</Button
           >
         </footer>
       </div>
@@ -42,6 +42,14 @@ export default defineComponent({
     closeOnClickOverlay: {
       type: Boolean,
       default: true,
+    },
+    okText: {
+      type: String,
+      default: 'OK',
+    },
+    cancelText: {
+      type: String,
+      default: 'Cancel',
     },
     ok: {
       type: Function,
