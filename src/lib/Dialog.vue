@@ -7,21 +7,21 @@
     <div class="aui-dialog-wrapper">
       <div class="aui-dialog">
         <header>
-          Title<span
+          <slot name="title" />
+          <span
             @click="close"
             class="aui-dialog-close"
           ></span>
         </header>
         <main>
-          <p>Content</p>
-          <p>Content</p>
+          <slot name="content" />
         </main>
         <footer>
           <Button @click="cancel">Cancel</Button>
           <Button
             @click="ok"
             level="main"
-            >Confirm</Button
+            >OK</Button
           >
         </footer>
       </div>

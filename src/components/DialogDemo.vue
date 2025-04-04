@@ -7,7 +7,15 @@
       :closeOnClickOverlay="false"
       :ok="ok"
       :cancel="cancel"
-    ></Dialog>
+    >
+      <template #title>
+        <strong>Hi</strong>
+      </template>
+      <template #content>
+        <div>Content 1</div>
+        <div>Content 2</div>
+      </template>
+    </Dialog>
   </div>
 </template>
 
