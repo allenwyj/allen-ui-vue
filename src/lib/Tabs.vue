@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, onUpdated, ref } from 'vue';
+import { computed, defineComponent, ref, watchPostEffect } from 'vue';
 import Tab from './Tab.vue';
 
 export default defineComponent({
@@ -69,9 +69,7 @@ export default defineComponent({
       indicator.value!.style.left = `${leftPosition}px`;
     };
 
-    onMounted(calculateIndicator);
-
-    onUpdated(calculateIndicator);
+    watchPostEffect(calculateIndicator);
 
     // get the elements from the default slots
     const defaults = context.slots.default?.();
