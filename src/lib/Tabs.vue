@@ -147,6 +147,7 @@ $border-color: #d9d9d9;
       width: 100px;
       height: 3px;
       background-color: $blue;
+      transition: all 250ms;
     }
   }
 
