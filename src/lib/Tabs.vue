@@ -11,7 +11,7 @@
         :key="index"
         :ref="
           (el) => {
-            if (el) navItems[index] = el as HTMLDivElement;
+            if (title === selected) currentTab = el as HTMLDivElement;
           }
           "
         @click="select(title)"
@@ -45,8 +45,7 @@ export default defineComponent({
   },
   emits: ['update:selected'],
   setup(props, context) {
-    // ref for the nav items
-    const navItems = ref<HTMLDivElement[]>([]);
+    const currentTab = ref<HTMLDivElement | null>(null);
     // ref for the indicator
     const indicator = ref<HTMLDivElement | null>(null);
     // ref for the nav container
@@ -54,12 +53,7 @@ export default defineComponent({
 
     // calculate the indicator position from the left
     const calculateIndicator = () => {
-      // fetching the width of the selected nav item
-      const divs = navItems.value;
-      const currentTab = divs.filter((div) =>
-        div.classList.contains('selected')
-      )[0];
-      const { width } = currentTab.getBoundingClientRect();
+      const { width } = currentTab.value!.getBoundingClientRect();
       // set the width of the indicator to fit the selected tab title
       indicator.value!.style.width = `${width}px`;
 
@@ -67,7 +61,8 @@ export default defineComponent({
       const { left } = container.value!.getBoundingClientRect();
 
       // fetching the left position of the selected nav item
-      const { left: currentTabLeft } = currentTab.getBoundingClientRect();
+      const { left: currentTabLeft } =
+        currentTab.value!.getBoundingClientRect();
       // calculate the left position of the indicator
       const leftPosition = currentTabLeft - left;
       // set the left position of the indicator
@@ -106,7 +101,7 @@ export default defineComponent({
       defaults,
       titles,
       current,
-      navItems,
+      currentTab,
       indicator,
       container,
       select,
