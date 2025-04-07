@@ -1,45 +1,116 @@
 <template>
   <div class="aui-tabs">
-    <div class="aui-tabs-nav">
+    <div
+      class="aui-tabs-nav"
+      ref="container"
+    >
       <div
         class="aui-tabs-nav-item"
+        :class="{ selected: title === selected }"
         v-for="(title, index) in titles"
         :key="index"
+        :ref="
+          (el) => {
+            if (el) navItems[index] = el as HTMLDivElement;
+          }
+          "
+        @click="select(title)"
       >
         {{ title }}
       </div>
+      <div
+        ref="indicator"
+        class="aui-tabs-nav-indicator"
+      ></div>
     </div>
     <div class="aui-tabs-content">
       <component
-        class="aui-tabs-content-item"
-        v-for="(tab, index) in defaults"
-        :is="tab"
-        :key="index"
+        :is="current"
+        :key="current?.props?.title"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent, onMounted, onUpdated, ref } from 'vue';
 import Tab from './Tab.vue';
 
 export default defineComponent({
+  props: {
+    selected: {
+      type: String,
+      required: true,
+    },
+  },
+  emits: ['update:selected'],
   setup(props, context) {
-    // check if the slots is Tab, otherwise throw error
+    // ref for the nav items
+    const navItems = ref<HTMLDivElement[]>([]);
+    // ref for the indicator
+    const indicator = ref<HTMLDivElement | null>(null);
+    // ref for the nav container
+    const container = ref<HTMLDivElement | null>(null);
+
+    // calculate the indicator position from the left
+    const calculateIndicator = () => {
+      // fetching the width of the selected nav item
+      const divs = navItems.value;
+      const currentTab = divs.filter((div) =>
+        div.classList.contains('selected')
+      )[0];
+      const { width } = currentTab.getBoundingClientRect();
+      // set the width of the indicator to fit the selected tab title
+      indicator.value!.style.width = `${width}px`;
+
+      // fetching the left position of the container
+      const { left } = container.value!.getBoundingClientRect();
+
+      // fetching the left position of the selected nav item
+      const { left: currentTabLeft } = currentTab.getBoundingClientRect();
+      // calculate the left position of the indicator
+      const leftPosition = currentTabLeft - left;
+      // set the left position of the indicator
+      indicator.value!.style.left = `${leftPosition}px`;
+    };
+
+    onMounted(calculateIndicator);
+
+    onUpdated(calculateIndicator);
+
+    // get the elements from the default slots
     const defaults = context.slots.default?.();
 
+    // check if the slots is Tab, otherwise throw error
     defaults?.forEach((tag) => {
       if (tag.type !== Tab) {
         throw new Error("Tabs's child must be `Tab` component");
       }
     });
 
+    // TODO: can be optimised, currently it's not supporting repeated titles
+    const current = computed(() => {
+      return defaults?.find((tag) => tag.props?.title === props.selected);
+    });
+
+    // get the titles from the default slots
     const titles = defaults?.map((tag) => {
       return tag.props?.title;
     });
 
-    return { defaults, titles };
+    const select = (title: string) => {
+      context.emit('update:selected', title);
+    };
+
+    return {
+      defaults,
+      titles,
+      current,
+      navItems,
+      indicator,
+      container,
+      select,
+    };
   },
 });
 </script>
@@ -54,7 +125,7 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
-
+    position: relative;
     &-item {
       padding: 8px 0;
       margin: 0 16px;
@@ -67,6 +138,15 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+    }
+
+    &-indicator {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background-color: $blue;
     }
   }
 
