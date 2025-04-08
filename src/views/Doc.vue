@@ -6,6 +6,18 @@
     />
     <div class="content">
       <aside v-if="asideVisible">
+        <h2>Getting started</h2>
+        <ol>
+          <li>
+            <router-link to="/doc">Overview</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/installation ">Installation</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/usage">Usage</router-link>
+          </li>
+        </ol>
         <h2>Components</h2>
         <ol>
           <li>
