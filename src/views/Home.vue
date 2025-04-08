@@ -6,7 +6,7 @@
         <h1>Allen-UI</h1>
         <h2>A UI toolkit</h2>
         <p class="actions">
-          <a href="https://github.com/">Github</a>
+          <a href="https://github.com/allenwyj/allen-ui-1">Github</a>
           <router-link to="/doc">Get Started</router-link>
         </p>
       </div>
