@@ -107,7 +107,7 @@ aside {
         }
       }
 
-      .router-link-active {
+      .router-link-exact-active {
         background: rgb(235, 245, 255);
         color: rgb(0, 107, 214);
         position: relative;
