@@ -53,7 +53,7 @@ export default defineComponent({
     position: absolute;
     top: 16px;
     left: 16px;
-    z-index: 10;
+    z-index: 11;
     > svg {
       width: 32px;
       height: 32px;

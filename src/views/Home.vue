@@ -66,8 +66,9 @@ export default defineComponent({
 
   clip-path: ellipse(70% 60% at 50% 40%);
 }
+
 .features {
-  margin: 64px 16px;
+  margin: 64px auto;
 
   @media (min-width: 800px) {
     width: 800px;
@@ -83,6 +84,7 @@ export default defineComponent({
 
     > li {
       width: 400px;
+      padding: 0 16px;
       margin: 16px 0;
       display: grid;
       justify-content: start;
@@ -101,7 +103,7 @@ export default defineComponent({
 
       > h3 {
         grid-area: title;
-        font-size: 28px;
+        font-size: 24px;
       }
 
       > p {
