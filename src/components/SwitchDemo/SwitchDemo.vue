@@ -1,5 +1,5 @@
 <template>
-  <h1>Switch examples</h1>
+  <h1>Switch</h1>
 
   <DemoComponent
     :comp="SwitchDemo1"

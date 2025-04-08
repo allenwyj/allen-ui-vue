@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Dialog</h1>
     <Button @click="toggle">toggle</Button>
     <Dialog
       v-model:visible="x"
@@ -16,17 +15,14 @@
         <div>Content 2</div>
       </template>
     </Dialog>
-
-    <h2>Use openDialog to show dialog</h2>
-    <Button @click="showDialog">toggle</Button>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import Dialog from '../lib/Dialog.vue';
-import Button from '../lib/Button.vue';
-import { openDialog } from '../lib/openDialog';
+import Dialog from '../../lib/Dialog.vue';
+import Button from '../../lib/Button.vue';
+import { openDialog } from '../../lib/openDialog';
 
 export default defineComponent({
   components: {

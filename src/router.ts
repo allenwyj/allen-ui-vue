@@ -3,9 +3,9 @@ import { h } from 'vue';
 import { createWebHashHistory, createRouter, RouteRecordRaw } from 'vue-router';
 import Home from './views/Home.vue';
 import Doc from './views/Doc.vue';
-import ButtonDemo from './components/ButtonDemo.vue';
-import DialogDemo from './components/DialogDemo.vue';
-import TabsDemo from './components/TabsDemo.vue';
+import ButtonDemo from './components/ButtonDemo/ButtonDemo.vue';
+import DialogDemo from './components/DialogDemo/DialogDemo.vue';
+import TabsDemo from './components/TabsDemo/TabsDemo.vue';
 import SwitchDemo from './components/SwitchDemo/SwitchDemo.vue';
 import Markdown from './components/Markdown.vue';
 
