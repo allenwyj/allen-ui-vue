@@ -67,8 +67,7 @@ export default defineComponent({
   clip-path: ellipse(70% 60% at 50% 40%);
 }
 .features {
-  margin: 64px auto;
-  width: 400px;
+  margin: 64px 16px;
 
   @media (min-width: 800px) {
     width: 800px;
@@ -131,7 +130,7 @@ export default defineComponent({
         #4b79a1 100%
       );
       margin: 10px;
-      padding: 12px 24px;
+      padding: 4px 24px;
       text-align: center;
       text-transform: capitalize;
       transition: 0.5s;

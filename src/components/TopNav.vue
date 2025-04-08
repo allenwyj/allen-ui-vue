@@ -1,5 +1,5 @@
 <template>
-  <div class="topnav">
+  <div class="topnav-wrapper">
     <router-link
       to="/"
       class="logo"
@@ -8,18 +8,20 @@
         <use xlink:href="#icon-groupsets_"></use>
       </svg>
     </router-link>
-    <ul class="menu">
-      <li>
-        <router-link to="/doc">Docs</router-link>
-      </li>
-    </ul>
-    <svg
-      v-if="toggleMenuButtonVisible"
-      class="toggle-aside icon"
-      @click="toggleAside"
-    >
-      <use xlink:href="#icon-caidan"></use>
-    </svg>
+    <div class="topnav">
+      <ul class="menu">
+        <li>
+          <router-link to="/doc">Docs</router-link>
+        </li>
+      </ul>
+      <svg
+        v-if="toggleMenuButtonVisible"
+        class="toggle-aside icon"
+        @click="toggleAside"
+      >
+        <use xlink:href="#icon-caidan"></use>
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -43,20 +45,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.topnav {
-  display: flex;
-  padding: 16px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-  justify-content: center;
-  align-items: center;
-
+.topnav-wrapper {
+  position: relative;
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
     > svg {
       width: 32px;
       height: 32px;
@@ -65,6 +62,26 @@ export default defineComponent({
       border: none;
     }
   }
+
+  @media (max-width: 500px) {
+    > .logo {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.topnav {
+  display: flex;
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  justify-content: flex-end;
+  align-items: center;
+
   > .menu {
     display: flex;
     white-space: nowrap;
@@ -79,8 +96,7 @@ export default defineComponent({
     height: 24px;
     position: absolute;
     left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 16px;
     display: none;
   }
 
@@ -88,9 +104,7 @@ export default defineComponent({
     > .menu {
       display: none;
     }
-    > .logo {
-      margin: 0 auto;
-    }
+
     > .toggle-aside {
       display: inline-block;
     }

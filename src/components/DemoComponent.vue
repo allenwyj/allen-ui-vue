@@ -78,6 +78,7 @@ $border-color: #d9d9d9;
   &-code {
     padding: 8px 16px;
     border-top: 1px dashed $border-color;
+    overflow: auto;
     > pre {
       line-height: 1.1;
       font-family: Consolas, 'Courier New', Courier, monospace;

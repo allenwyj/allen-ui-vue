@@ -72,7 +72,7 @@ export default defineComponent({
   }
   > main {
     flex-grow: 1;
-    padding: 16px;
+    padding: 36px 16px;
   }
 }
 aside {
@@ -85,6 +85,7 @@ aside {
   height: 100%;
   z-index: 9;
   border-right: 2px solid #eee;
+  background: white;
 
   > h2 {
     margin-bottom: 4px;
