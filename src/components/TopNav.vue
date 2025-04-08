@@ -62,7 +62,7 @@ export default defineComponent({
       height: 32px;
     }
     &:hover {
-      text-decoration: none;
+      border: none;
     }
   }
   > .menu {
