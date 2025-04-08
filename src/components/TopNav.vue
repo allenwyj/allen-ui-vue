@@ -1,14 +1,25 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <router-link
+      to="/"
+      class="logo"
+    >
+      <svg class="icon">
+        <use xlink:href="#icon-groupsets_"></use>
+      </svg>
+    </router-link>
     <ul class="menu">
-      <li>Menu 1</li>
-      <li>Menu 2</li>
+      <li>
+        <router-link to="/doc">Docs</router-link>
+      </li>
     </ul>
-    <span
-      class="toggleAside"
+    <svg
+      v-if="toggleMenuButtonVisible"
+      class="toggle-aside icon"
       @click="toggleAside"
-    ></span>
+    >
+      <use xlink:href="#icon-caidan"></use>
+    </svg>
   </div>
 </template>
 
@@ -16,6 +27,12 @@
 import { defineComponent, inject, Ref } from 'vue';
 
 export default defineComponent({
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const asideVisible = inject<Ref<boolean>>('asideVisible');
     const toggleAside = inject<(e: Event) => void>('toggleAside');
@@ -27,7 +44,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .topnav {
-  background: pink;
   display: flex;
   padding: 16px;
   position: fixed;
@@ -37,9 +53,17 @@ export default defineComponent({
   z-index: 10;
   justify-content: center;
   align-items: center;
+
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    > svg {
+      width: 32px;
+      height: 32px;
+    }
+    &:hover {
+      text-decoration: none;
+    }
   }
   > .menu {
     display: flex;
@@ -50,10 +74,9 @@ export default defineComponent({
     }
   }
 
-  > .toggleAside {
+  > .toggle-aside {
     width: 24px;
     height: 24px;
-    background: red;
     position: absolute;
     left: 16px;
     top: 50%;
@@ -68,7 +91,7 @@ export default defineComponent({
     > .logo {
       margin: 0 auto;
     }
-    > .toggleAside {
+    > .toggle-aside {
       display: inline-block;
     }
   }
