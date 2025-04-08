@@ -5,5 +5,6 @@ import { vitePluginVueReturnSourceCode } from './plugins/vitePluginVueReturnSour
 // https://vitejs.dev/config/
 
 export default defineConfig({
+  base: '/allen-ui-website/', // needed for deploy to github pages
   plugins: [vue(), vitePluginMd2Vue(), vitePluginVueReturnSourceCode()],
 });
