@@ -79,22 +79,56 @@ export default defineComponent({
   }
 }
 aside {
-  background: lightblue;
   width: 200px;
-  padding: 16px;
+  padding: 16px 12px;
   position: fixed;
   top: 0;
   left: 0;
   padding-top: 70px;
   height: 100%;
   z-index: 9;
+  border-right: 2px solid #eee;
 
   > h2 {
     margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 16px;
+    padding-bottom: 4px;
   }
   > ol {
     > li {
-      padding: 4px 0;
+      font-size: 14px;
+      > a {
+        display: block;
+        padding: 4px 24px;
+        border-radius: 8px;
+
+        &:hover {
+          border-bottom: unset;
+          background: rgb(246, 247, 248);
+        }
+      }
+
+      .router-link-active {
+        background: rgb(235, 245, 255);
+        color: rgb(0, 107, 214);
+        position: relative;
+        &:hover {
+          background: rgb(204, 230, 255, 0.8);
+        }
+
+        &::before {
+          position: absolute;
+          content: '';
+          display: block;
+          width: 1px;
+          background: rgb(51, 153, 255);
+          left: 10px;
+          top: 0;
+          bottom: 0;
+        }
+      }
     }
   }
 }
