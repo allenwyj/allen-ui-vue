@@ -3,10 +3,10 @@
     @click="toggle"
     class="aui-switch"
     :class="{ 'aui-switch-on': value }"
+    :disabled="disabled"
   >
     <span></span>
   </button>
-  <div>{{ value }}</div>
 </template>
 
 <script lang="ts">
@@ -15,9 +15,11 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   props: {
     value: Boolean,
+    disabled: Boolean,
   },
   setup(props, context) {
     const toggle = () => {
+      if (props.disabled) return;
       context.emit('update:value', !props.value);
     };
 
@@ -36,7 +38,9 @@ $h2: $h - 4px;
   background: #bfbfbf;
   border-radius: $h/2;
   position: relative;
-
+  &:disabled {
+    cursor: not-allowed;
+  }
   span {
     position: absolute;
     top: 2px;
