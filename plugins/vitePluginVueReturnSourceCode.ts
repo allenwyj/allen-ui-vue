@@ -12,7 +12,7 @@ export const vitePluginVueReturnSourceCode = (options?: {}): {
       if (!id.endsWith('.vue')) {
         return;
       }
-      //filename ends with number
+      //filename ends with number, adding sourceCode to the code
       if (/\d+.vue$/.test(id)) {
         const filePath = path.resolve(id);
         let sourceCode = fs.readFileSync(filePath, 'utf8');
