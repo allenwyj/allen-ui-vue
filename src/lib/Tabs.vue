@@ -76,7 +76,8 @@ export default defineComponent({
 
     // check if the slots is Tab, otherwise throw error
     defaults?.forEach((tag) => {
-      if (tag.type !== Tab) {
+      // @ts-ignore
+      if (tag.type?.name !== 'AllenUITab') {
         throw new Error("Tabs's child must be `Tab` component");
       }
     });
