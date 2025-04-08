@@ -12,10 +12,7 @@
             <router-link to="/doc">Overview</router-link>
           </li>
           <li>
-            <router-link to="/doc/installation ">Installation</router-link>
-          </li>
-          <li>
-            <router-link to="/doc/usage">Usage</router-link>
+            <router-link to="/doc/get-started">Usage</router-link>
           </li>
         </ol>
         <h2>Components</h2>
