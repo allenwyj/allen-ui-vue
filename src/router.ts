@@ -6,7 +6,7 @@ import Doc from './views/Doc.vue';
 import ButtonDemo from './components/ButtonDemo.vue';
 import DialogDemo from './components/DialogDemo.vue';
 import TabsDemo from './components/TabsDemo.vue';
-import SwitchDemo from './components/SwitchDemo.vue';
+import SwitchDemo from './components/SwitchDemo/SwitchDemo.vue';
 import Markdown from './components/Markdown.vue';
 
 import docmd from '../markdown/intro.md';
